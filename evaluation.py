@@ -10,10 +10,6 @@ import pandas as pd
 import numpy as np
 import sys
 
-edgeFile = open(sys.argv[1],"r")
-edges = edgeFile.readlines()
-commFile = open(sys.argv[2],"r")
-communities = commFile.readlines()
 
 def relabel(number_comm):
     number_comm.sort()
@@ -99,6 +95,12 @@ def external_conductance(e):
         conductance += cluster_conductance
         
     return conductance/col,min(ci),(1-max(ci))
+
+
+edgeFile = open(sys.argv[1],"r")
+edges = edgeFile.readlines()
+commFile = open(sys.argv[2],"r")
+communities = commFile.readlines()
 
 
 #v is the number of vertices
