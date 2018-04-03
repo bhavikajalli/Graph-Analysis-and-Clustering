@@ -8,10 +8,10 @@ The code evaluation.py can be used to evaluate a clustering algorithm. It can fi
 ```
 python evaluation.py <edge_file> <communities_file>
 ```
-The edge_file is the file containing all the edges in the graph. The nodes in each edge are seperated by a comma.
+The edge_file is the file containing all the edges in the graph. The nodes in each edge are seperated by a comma. If the graph is unweighted, the weight is given as 1.
 ```
-node1,node2
-node2,node3
+node1,node2,weight
+node2,node3,weight
 ```
 
 The communities_file has all the nodes along with the cluster number that they belong me.
