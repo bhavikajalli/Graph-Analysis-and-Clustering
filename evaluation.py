@@ -38,7 +38,8 @@ def edgeMatrix(edges,communities):
     total_edges = 0
     for edge in edges[1:]:
         #print(edge)
-        edge1,edge2 = edge.strip().split(",")
+        edge1,edge2,weight = edge.strip().split(",")
+        weight = float(weight)
         number_vertices.append(edge1)
         number_vertices.append(edge2)
         try:    
@@ -51,18 +52,26 @@ def edgeMatrix(edges,communities):
         j = relabbelled_communities[comm2]
         #print(i,j)
         if i != j:
-            e[i][j] +=1
-            e[j][i] +=1
+#             e[i][j] +=1
+#             e[j][i] +=1
+            e[i][j] += weight
+            e[j][i] += weight
         else:
-            e[i][j] += 1
+#            e[i][j] += 1
+            e[i][j] += weight
         total_edges +=1
     return e,total_edges,len(set(number_vertices))
 
 ##Evaluation Metric- Modularity
-def modularity(e):
+def modularity_undirected(e):
     T = np.trace(e)
+    #Sum over rows for the term ai
+    row_sum = e.sum(axis = 1)
+    sum_a = 0
+    for row in row_sum:
+        sum_a += (row)**2
     square = np.square(e)
-    Q = T - sum(sum(square)) 
+    Q = T - sum_a 
     return Q
  
 ##Evaluation Metric- Density
@@ -105,19 +114,19 @@ communities = commFile.readlines()
 
 #v is the number of vertices
 e,total_edges,v = edgeMatrix(edges,communities)
-e_fraction = e/total_edges
+e_fraction = e/(2 * total_edges)
 
-modularity = modularity(e_fraction)
-print("Modularity: ", modularity)
+modularity_e = modularity_undirected(e_fraction)
+print("Modularity: ", modularity_e)
 
 
-density = density_directed(e,v)
-print("Density: ",density)
+density = density_undirected(e,v)
+print("Density Undirected: ",density)
 
 external_conductance,intra_cluster,inter_cluster = external_conductance(e)
 
 print("External Conductance: ",external_conductance)
 print("Intra Cluster Conductance: ",intra_cluster)
-print("Inter Cluster Conductance: ",inter_cluster)    
+print("Inter Cluster Conductance: ",inter_cluster)   
     
 
