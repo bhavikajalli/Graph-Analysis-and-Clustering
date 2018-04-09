@@ -2,9 +2,6 @@
 # coding: utf-8
 
 # In[1]:
-
-
-import pandas as pd
 import numpy as np
 from numpy import linalg as LA
 import sys
@@ -120,13 +117,13 @@ e,total_edges,v = edgeMatrix(edges,communities)
 e_fraction = e/(2 * total_edges)
 
 modularity_e = modularity_undirected(e_fraction)
-print("Modularity Undirected: ", modularity_e)
-
-modularity_e = modularity_directed(e_fraction)
-print("Modularity Directed: ", modularity_e)
+print("Modularity: ", modularity_e)
 
 density = density_undirected(e,v)
 print("Density Undirected: ",density)
+
+density = density_directed(e,v)
+print("Density Directed: ",density)
 
 external_conductance,intra_cluster,inter_cluster = external_conductance(e)
 
