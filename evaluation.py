@@ -1,14 +1,26 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr  2 14:41:06 2018
 
-@author: BhavikaJalli
-"""
+# coding: utf-8
+
+# In[1]:
+
 
 import pandas as pd
 import numpy as np
+from numpy import linalg as LA
 import sys
+
+
+# In[2]:
+
+
+#df = pd.DataFrame
+edgeFile = open(sys.argv[1],"r")
+edges = edgeFile.readlines()
+commFile = open(sys.argv[2],"r")
+communities = commFile.readlines()
+
+
+# In[5]:
 
 
 def relabel(number_comm):
@@ -52,12 +64,9 @@ def edgeMatrix(edges,communities):
         j = relabbelled_communities[comm2]
         #print(i,j)
         if i != j:
-#             e[i][j] +=1
-#             e[j][i] +=1
             e[i][j] += weight
             e[j][i] += weight
         else:
-#            e[i][j] += 1
             e[i][j] += weight
         total_edges +=1
     return e,total_edges,len(set(number_vertices))
@@ -71,7 +80,7 @@ def modularity_undirected(e):
     for row in row_sum:
         sum_a += (row)**2
     square = np.square(e)
-    Q = T - sum_a 
+    Q = T - sum(sum(square)) 
     return Q
  
 ##Evaluation Metric- Density
@@ -106,19 +115,15 @@ def external_conductance(e):
     return conductance/col,min(ci),(1-max(ci))
 
 
-edgeFile = open(sys.argv[1],"r")
-edges = edgeFile.readlines()
-commFile = open(sys.argv[2],"r")
-communities = commFile.readlines()
-
-
 #v is the number of vertices
 e,total_edges,v = edgeMatrix(edges,communities)
 e_fraction = e/(2 * total_edges)
 
 modularity_e = modularity_undirected(e_fraction)
-print("Modularity: ", modularity_e)
+print("Modularity Undirected: ", modularity_e)
 
+modularity_e = modularity_directed(e_fraction)
+print("Modularity Directed: ", modularity_e)
 
 density = density_undirected(e,v)
 print("Density Undirected: ",density)
@@ -126,7 +131,8 @@ print("Density Undirected: ",density)
 external_conductance,intra_cluster,inter_cluster = external_conductance(e)
 
 print("External Conductance: ",external_conductance)
-print("Intra Cluster Conductance: ",intra_cluster)
-print("Inter Cluster Conductance: ",inter_cluster)   
-    
+# print("Intra Cluster Conductance: ",intra_cluster)
+# print("Inter Cluster Conductance: ",inter_cluster)
+
+
 
