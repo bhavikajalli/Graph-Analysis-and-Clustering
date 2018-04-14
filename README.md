@@ -1,5 +1,5 @@
 # Graph-Analysis-and-Clustering
-The trend analysis of #MeToo event 
+The trend analysis of #MeToo event by Bhavika Jalli, Siyan Chen, Cixing Li and Vidya Mansur.
 
 ### Crawl the #MeToo data
 We have crawled data from Twitter with the #MeToo from February 25th to May 31st from Twitter. The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days. As the first step an application needs to be submitted with Twitter at https://apps.twitter.com/. Then please install the Tweepy API with
@@ -60,7 +60,6 @@ python3 topwords.py clus_sentiment.csv
 ### Evaluating the Methodologies using Modularity and Conductance
 
 The code evaluation.py can be used to evaluate a clustering algorithm. It can find the density, modularity and conductance of the clusters. The code can be used as:
-
 ```
 python evaluation.py <edge_file> <communities_file>
 ```
