@@ -8,17 +8,22 @@ pip install tweepy==3.3.0
 ```
 The code can be used with the command below. 
 ```
-python crawl_metoo.py --hashtag #MeToo --since 2018-03-10 --until 2018-03-19 --outputFile met00_data.txt
+python crawl_metoo.py --hashtag #MeToo --since 2018-03-10 --until 2018-03-19 --outputFile metoo_rawTweets.txt
 ```
 If you need the data that we have already crawled, please send me a message.
 
 ### Pre Process the Crawled Data
 
-The code data_preprocess.ipynb takes in the txt file created by crawling and preprocesses each tweet entry. The output is stored in a corresponding file. An example of the final output looks like:
+The code data_preprocess.py takes in the txt file created by crawling and preprocesses each tweet entry. The file can be used to pre processing as follows. The file requires NLTK to be installed and also stopwords downloaded from nltk.corpus.
+```
+python data_preprocess.py --input metoo_rawTweets.txt --output metoo_processedTweets.txt
+```
+The output is stored in a corresponding file. An example of the final output looks like:
 ```
 name,tweet,retweet,mentions,hashtags,retweet_count,replied_to,location
 stewartdarkin,ok advertise torturing killing,ColetteDA,ColetteDA-GooglePlay-EverydaySexism,women-angry-upset-trauma-feminism-metoo,6,None,Manchester
 ```
+### Creating the Mentions, Re-Tweet and the Similarity Graphs
 
 The code evaluation.py can be used to evaluate a clustering algorithm. It can find the density, modularity and conductance of the clusters. The code can be used as:
 
