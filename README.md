@@ -1,7 +1,16 @@
 # Graph-Analysis-and-Clustering
 The trend analysis of #MeToo event 
 
-The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days.
+### Crawl the #MeToo data
+We have crawled data from Twitter with the #MeToo from February 25th to May 31st from Twitter. The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days. As the first step an application needs to be submitted with Twitter at https://apps.twitter.com/. Then please install the Tweepy API with
+```
+pip install tweepy==3.3.0
+```
+Please send me a message if you need the data. 
+The code can be used the the command below. 
+```
+python crawl_metoo.py --hashtag #MeToo --since 2018-03-10 --until 2018-03-19 --outputFile met00_data.txt
+```
 
 The code data_preprocess.ipynb takes in the txt file created by crawling and preprocesses each tweet entry. The output is stored in a corresponding file. An example of the final output looks like:
 ```
