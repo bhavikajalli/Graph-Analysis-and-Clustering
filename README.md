@@ -26,7 +26,15 @@ stewartdarkin,ok advertise torturing killing,ColetteDA,ColetteDA-GooglePlay-Ever
 ### Creating the Mentions, Re-Tweet and the Similarity Graphs
 
 ### Detecting the Communities in the graphs
-
+The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities i=using LPA and LM.
+The code takes in a graph and an argument for the chosen model and gives the detected communities as a txt file with the node and the community that the node belongs to in a tab seperated format.
+```
+python detectcommunities.py mentiongraph.txt --model LPA --output LPA.txt
+```
+or
+```
+python detectcommunities.py mentiongraph.txt --model LM --output LM.txt
+```
 
 ### Evaluating the Methodologies using Modularity and Conductance
 
