@@ -6,11 +6,13 @@ We have crawled data from Twitter with the #MeToo from February 25th to May 31st
 ```
 pip install tweepy==3.3.0
 ```
-Please send me a message if you need the data. 
-The code can be used the the command below. 
+The code can be used with the command below. 
 ```
 python crawl_metoo.py --hashtag #MeToo --since 2018-03-10 --until 2018-03-19 --outputFile met00_data.txt
 ```
+If you need the data that we have already crawled, please send me a message.
+
+### Pre Process the Crawled Data
 
 The code data_preprocess.ipynb takes in the txt file created by crawling and preprocesses each tweet entry. The output is stored in a corresponding file. An example of the final output looks like:
 ```
