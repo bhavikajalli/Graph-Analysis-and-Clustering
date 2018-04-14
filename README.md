@@ -42,7 +42,21 @@ python detectcommunities.py mentiongraph.txt --model LPA --output LPA.txt
 
 python detectcommunities.py mentiongraph.txt --model LM --output LM.txt
 ```
-
+### Sentiment Analysis 
+The trend of the sentiment of tweets with #MeToo over a period of time can be calculated using the TextBlob package from NLTK. This can be done using the command
+```
+python3 sentiment_analysis/sentiment_analysis.py edges_similarity.clu tweets_graph.txt
+```
+where edges_similarity.clu is the output file from the InfoMap community detection algorithm on the similarity based graph. It consists of an Id and its corresponding community. The Id here represents the tweet which is specified in the tweets_graph.txt file. The output of this command will be a file with the community, tweet and the sentiment.
+```
+community,tweet,sentiment
+1,thanks,positive
+1,oscars celebration glamour,neutral   
+```
+This output can be used to visualize the the top words from each community.
+```
+python3 topwords.py clus_sentiment.csv
+```
 ### Evaluating the Methodologies using Modularity and Conductance
 
 The code evaluation.py can be used to evaluate a clustering algorithm. It can find the density, modularity and conductance of the clusters. The code can be used as:
@@ -62,3 +76,4 @@ node1   1
 node2   1
 node3   2
 ```
+All the graph created were visualized using the tool Gephi.
