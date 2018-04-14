@@ -35,7 +35,7 @@ def edgeMatrix(edges,communities):
     number_vertices = []
 
     for line in communities[1:]:
-        node,comm = line.strip().split(",")
+        node,comm = line.strip().split("\t")
         node_comm[node] = comm
         number_comm.append(int(comm))
 
@@ -47,7 +47,7 @@ def edgeMatrix(edges,communities):
     total_edges = 0
     for edge in edges[1:]:
         #print(edge)
-        edge1,edge2,weight = edge.strip().split(",")
+        edge1,edge2,weight = edge.strip().split("\t")
         weight = float(weight)
         number_vertices.append(edge1)
         number_vertices.append(edge2)
@@ -122,8 +122,8 @@ print("Modularity: ", modularity_e)
 density = density_undirected(e,v)
 print("Density Undirected: ",density)
 
-density = density_directed(e,v)
-print("Density Directed: ",density)
+#density = density_directed(e,v)
+#print("Density Directed: ",density)
 
 external_conductance,intra_cluster,inter_cluster = external_conductance(e)
 

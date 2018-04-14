@@ -24,15 +24,22 @@ name,tweet,retweet,mentions,hashtags,retweet_count,replied_to,location
 stewartdarkin,ok advertise torturing killing,ColetteDA,ColetteDA-GooglePlay-EverydaySexism,women-angry-upset-trauma-feminism-metoo,6,None,Manchester
 ```
 ### Creating the Mentions, Re-Tweet and the Similarity Graphs
+The processed data from twitter was used to create three types of graphs. The Mentions graph is created between users if either of them had mentioned the other in their tweets. The Re-tweet graph is created between users if either of them had re-tweeted the other. The edge is weighted by the number of mentions or re-tweets between the set of users. 
+The similarity graph was created by first representing the tweets in a vector-space model using LDA and then calculating co-sine similarity between them. The cosine similarity is thresholded at 0.7 and is taken as the edge weight.
+Please ensure that the scikit-learn library is installed
+```
+python creategraph.py metoo_processedTweets.txt --graphtype mention --output mentionGraph.txt
 
+python creategraph.py metoo_processedTweets.txt --graphtype retweet --output retweetGraph.txt
+
+python creategraph.py metoo_processedTweets.txt --graphtype similarity --output similarityGraph.txt
+```
 ### Detecting the Communities in the graphs
 The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities i=using LPA and LM.
 The code takes in a graph and an argument for the chosen model and gives the detected communities as a txt file with the node and the community that the node belongs to in a tab seperated format.
 ```
 python detectcommunities.py mentiongraph.txt --model LPA --output LPA.txt
-```
-or
-```
+
 python detectcommunities.py mentiongraph.txt --model LM --output LM.txt
 ```
 
@@ -43,15 +50,15 @@ The code evaluation.py can be used to evaluate a clustering algorithm. It can fi
 ```
 python evaluation.py <edge_file> <communities_file>
 ```
-The edge_file is the file containing all the edges in the graph. The nodes in each edge are seperated by a comma. If the graph is unweighted, the weight is given as 1.
+The edge_file is the file containing all the edges in the graph. The nodes in each edge are seperated by a tab. If the graph is unweighted, the weight is given as 1.
 ```
-node1,node2,weight
-node2,node3,weight
+node1   node2   weight
+node2   node3   weight
 ```
 
 The communities_file has all the nodes along with the cluster number that they belong me.
 ```
-node1,1
-node2,1
-node3,2
+node1   1
+node2   1
+node3   2
 ```
