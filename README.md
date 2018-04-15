@@ -1,5 +1,5 @@
 # Graph-Analysis-and-Clustering
-The trend analysis of #MeToo event by Bhavika Jalli, Siyan Chen, Cixing Li and Vidya Mansur.
+Community Detection and trend analysis of #MeToo event by Bhavika Jalli, Siyan Chen, Cixing Li and Vidya Mansur from the University of Michigan, Ann Arbor.
 
 ### Crawl the #MeToo data
 We have crawled data from Twitter with the #MeToo from February 25th to May 31st from Twitter. The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days. As the first step an application needs to be submitted with Twitter at https://apps.twitter.com/. Then please install the Tweepy API with
