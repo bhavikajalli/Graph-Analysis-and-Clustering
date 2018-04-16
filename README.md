@@ -10,6 +10,7 @@ pip install numpy
 pip install geopy
 nltk.download('stopwords')
 ```
+Please run the requirement.sh file before running the Makefile.
 
 ### Crawl the #MeToo data
 We have crawled data from Twitter with the #MeToo from February 25th to May 31st from Twitter. The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days. As the first step an application needs to be submitted with Twitter at https://apps.twitter.com/. Then please install the Tweepy API with
