@@ -35,7 +35,9 @@ def edgeMatrix(edges,communities):
     number_vertices = []
 
     for line in communities[1:]:
-        node,comm = line.strip().split("\t")
+        components = line.strip().split("\t")
+        node = components[0]
+        comm = components[1]
         node_comm[node] = comm
         number_comm.append(int(comm))
 
