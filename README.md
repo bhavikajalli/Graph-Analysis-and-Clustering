@@ -1,6 +1,16 @@
 # Graph-Analysis-and-Clustering
 Community Detection and trend analysis of #MeToo event by Bhavika Jalli, Siyan Chen, Cixing Li and Vidya Mansur from the University of Michigan, Ann Arbor.
 
+### Requirements
+```
+pip install NLTK
+pip install scikit-learn
+pip install pandas
+pip install numpy
+pip install geopy
+nltk.download('stopwords')
+```
+
 ### Crawl the #MeToo data
 We have crawled data from Twitter with the #MeToo from February 25th to May 31st from Twitter. The code crawl_metoo.ipynb can be be used to collect tweets of a given hashtag upto 9 days. As the first step an application needs to be submitted with Twitter at https://apps.twitter.com/. Then please install the Tweepy API with
 ```
@@ -79,3 +89,10 @@ node2   1
 node3   2
 ```
 All the graphs created were visualized using the tool Gephi (https://gephi.org/).
+
+The Makefile can be used to create graphs and detect communities in all the three networks by using the command
+```
+make creategraph
+make detectcommunities
+```
+
