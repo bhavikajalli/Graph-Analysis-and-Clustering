@@ -16,5 +16,5 @@ Sentiment:
 topwords:
 	python3 topwords.py clus_sentiment.csv
 evaluation:
-	python evaluation.py <edge_file> <communities_file>
+	python evaluation.py mentionGraph.txt LM.txt
 
