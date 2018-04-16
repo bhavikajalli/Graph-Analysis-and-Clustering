@@ -35,7 +35,8 @@ python creategraph.py metoo_processedTweets.txt --graphtype retweet --output ret
 python creategraph.py metoo_processedTweets.txt --graphtype similarity --output similarityGraph.txt
 ```
 ### Detecting the Communities in the graphs
-The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities i=using LPA and LM. Infomap is a network clustering algorithm based on the[Map equation](http://www.mapequation.org/publications.html#Rosvall-Axelsson-Bergstrom-2009-Map-equation).For more info, and how to install it see [www.mapequation.org](http://www.mapequation.org).
+The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities using LPA and LM. 
+Infomap is a network clustering algorithm based on the[Map equation](http://www.mapequation.org/publications.html#Rosvall-Axelsson-Bergstrom-2009-Map-equation).For more info, and how to install it see [www.mapequation.org](http://www.mapequation.org).
 The code takes in a graph and an argument for the chosen model and gives the detected communities as a txt file with the node and the community that the node belongs to in a tab seperated format. 
 ```
 python detectcommunities.py mentionGraph.txt --model LPA --output LPA.txt
