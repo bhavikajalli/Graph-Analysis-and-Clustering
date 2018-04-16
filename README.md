@@ -35,12 +35,14 @@ python creategraph.py metoo_processedTweets.txt --graphtype retweet --output ret
 python creategraph.py metoo_processedTweets.txt --graphtype similarity --output similarityGraph.txt
 ```
 ### Detecting the Communities in the graphs
-The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities i=using LPA and LM.
-The code takes in a graph and an argument for the chosen model and gives the detected communities as a txt file with the node and the community that the node belongs to in a tab seperated format.
+The project uses three clustering methodologies to detect communities in the above graphs. Label Propagation Algorithm(LPA), Louvian Modularity(LM) and InfoMap. The python file detectcommunities.py contains the code to detect the communities i=using LPA and LM. Infomap is a network clustering algorithm based on the[Map equation](http://www.mapequation.org/publications.html#Rosvall-Axelsson-Bergstrom-2009-Map-equation).For more info, and how to install it see [www.mapequation.org](http://www.mapequation.org).
+The code takes in a graph and an argument for the chosen model and gives the detected communities as a txt file with the node and the community that the node belongs to in a tab seperated format. 
 ```
-python detectcommunities.py mentiongraph.txt --model LPA --output LPA.txt
+python detectcommunities.py mentionGraph.txt --model LPA --output LPA.txt
 
-python detectcommunities.py mentiongraph.txt --model LM --output LM.txt
+python detectcommunities.py mentionGraph.txt --model LM --output LM.txt
+
+./Infomap similarityGraph.txt output/ -N 5 --clu
 ```
 ### Sentiment Analysis 
 The trend of the sentiment of tweets with #MeToo over a period of time can be calculated using the TextBlob package from NLTK. This can be done using the command
