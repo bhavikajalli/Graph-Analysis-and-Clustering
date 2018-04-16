@@ -78,4 +78,4 @@ node1   1
 node2   1
 node3   2
 ```
-All the graph created were visualized using the tool Gephi.
+All the graphs created were visualized using the tool Gephi (https://gephi.org/).
