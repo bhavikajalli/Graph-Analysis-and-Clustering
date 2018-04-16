@@ -8,13 +8,27 @@ creategraph:
 	python creategraph.py metoo_processedTweets.txt --graphtype retweet --output retweetGraph.txt
 	python creategraph.py metoo_processedTweets.txt --graphtype similarity --output similarityGraph.txt
 detectcommunities:
-	python detectcommunities.py mentionGraph.txt --model LPA --output LPA.txt
-	python detectcommunities.py mentionGraph.txt --model LM --output LM.txt
+	python detectcommunities.py mentionGraph.txt --model LPA --output LPA_mention.txt
+	python detectcommunities.py mentionGraph.txt --model LM --output LM_mention.txt
+	./Infomap mentionGraph.txt output/ -N 5 --clu
+	python detectcommunities.py retweetGraph.txt --model LPA --output LPA_retweet.txt
+	python detectcommunities.py retweetGraph.txt --model LM --output LM_retweet.txt
+	./Infomap retweetGraph.txt output/ -N 5 --clu
+	python detectcommunities.py similarityGraph.txt --model LPA --output LPA_similarity.txt
+	python detectcommunities.py similarityGraph.txt --model LM --output LM_similarity.txt
 	./Infomap similarityGraph.txt output/ -N 5 --clu
 Sentiment:
-	python3 sentiment_analysis/sentiment_analysis.py edges_similarity.clu tweets_graph.txt
+	python3 sentiment_analysis/sentiment_analysis.py similarityGraph.clu tweets_graph.txt
 topwords:
 	python3 topwords.py clus_sentiment.csv
 evaluation:
-	python evaluation.py mentionGraph.txt LM.txt
+	python evaluation.py mentionGraph.txt LPA_mention.txt
+	python evaluation.py mentionGraph.txt LM_mention.txt
+	python evaluation.py mentionGraph.txt mentionGraph.clu
+	python evaluation.py retweetGraph.txt LPA_retweet.txt
+	python evaluation.py retweetGraph.txt LM_retweet.txt
+	python evaluation.py retweetGraph.txt retweetGraph.clu
+	python evaluation.py similarityGraph.txt LPA_similarity.txt
+	python evaluation.py similarityGraph.txt LM_similarity.txt
+	python evaluation.py similarityGraph.txt similarityGraph.clu
 
