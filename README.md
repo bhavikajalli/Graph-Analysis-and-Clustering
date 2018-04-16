@@ -58,7 +58,7 @@ python detectcommunities.py mentionGraph.txt --model LM --output LM.txt
 ### Sentiment Analysis 
 The trend of the sentiment of tweets with #MeToo over a period of time can be calculated using the TextBlob package from NLTK. This can be done using the command
 ```
-python3 sentiment_analysis/sentiment_analysis.py edges_similarity.clu tweets_graph.txt
+python3 sentiment_analysis/sentiment_analysis.py similarityGraph.clu tweets_graph.txt
 ```
 where edges_similarity.clu is the output file from the InfoMap community detection algorithm on the similarity based graph. It consists of an Id and its corresponding community. The Id here represents the tweet which is specified in the tweets_graph.txt file. The output of this command will be a file with the community, tweet and the sentiment.
 ```
