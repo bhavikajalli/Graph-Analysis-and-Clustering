@@ -98,3 +98,5 @@ make detectcommunities
 ```
 
 The final video for the project is available at https://www.youtube.com/watch?v=voOkGadNzSY
+
+### The file Community Detection #MeToo - Final Report contains the final report of the entire project.
